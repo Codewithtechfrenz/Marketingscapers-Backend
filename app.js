@@ -31,7 +31,7 @@ app.set('view engine', 'pug');
 
 // ================== CORS ==================
 app.use(cors({
-  origin: ["http://localhost:3000", "http://localhost:5173", "https://marketingscapers.com", "https://admin.marketingscapers.com", "https://www.marketingscapers.com"],
+  origin: ["http://localhost:3000", "http://localhost:5173", "https://marketingscapers.com", "https://admin.marketingscapers.com", "https://www.marketingscapers.com", "https://www.admin.marketingscapers.com"],
   methods: ['GET', 'POST', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
