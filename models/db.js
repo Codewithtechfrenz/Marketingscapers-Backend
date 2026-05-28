@@ -1,36 +1,14 @@
+require('dotenv').config();
 const mysql = require("mysql");
-
-// const pool = mysql.createPool({
-//     connectionLimit: 50,          
-//     connectTimeout: 30 * 1000,    
-//     acquireTimeout: 60 * 1000,   
-//     timeout: 60 * 1000,
-//     multipleStatements: true,
-//     host: "localhost",
-//     user: "sa",
-//     password: "sa@123456",
-//     database: "Aandavartools",
-//     port: 3306
-// });
-
 
 const pool = mysql.createPool({
     host: "localhost",
     user: "root",
-    password: "",
+    password: process.env.DB_PASSWORD,
     database: "marketingscapers",
-   // port: 3306,
     connectionLimit: 50,
     multipleStatements: true
 });
-
-
-
-
-
-
-
-
 
 exports.mainDb = async function (query, values, callback) {
     pool.getConnection((err, connection) => {
@@ -51,8 +29,6 @@ exports.closePool = () => {
         if (err) console.error("Error closing pool:", err);
     });
 };
-
-
 
 exports.mainDbForCron = function (query, values = []) {
     return new Promise((resolve, reject) => {
